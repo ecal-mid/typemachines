@@ -12,7 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream; 
 import java.io.IOException; 
 
-public class shader extends PApplet {
+public class postprocessing extends PApplet {
 
 PGraphics frameBuffer;
 PShader postProcessingShader;
@@ -33,6 +33,7 @@ public void draw () {
   shader(postProcessingShader);
 }
 
+// Use this function and the "frameBuffer" variable to draw your black&white shapes.
 public void renderBuffer () {
   frameBuffer.background(0);
   frameBuffer.fill(255);
@@ -44,7 +45,7 @@ public void renderBuffer () {
 }
   public void settings() {  size(400, 400, P2D); }
   static public void main(String[] passedArgs) {
-    String[] appletArgs = new String[] { "shader" };
+    String[] appletArgs = new String[] { "postprocessing" };
     if (passedArgs != null) {
       PApplet.main(concat(appletArgs, passedArgs));
     } else {

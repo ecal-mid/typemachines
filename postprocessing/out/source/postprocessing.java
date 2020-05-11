@@ -36,12 +36,13 @@ public void draw () {
 // Use this function and the "frameBuffer" variable to draw your black&white shapes.
 public void renderBuffer () {
   frameBuffer.background(0);
+  frameBuffer.blendMode(DIFFERENCE);
   frameBuffer.fill(255);
   frameBuffer.ellipse(width * 0.5f, height * 0.5f, width * 0.3f, height * 0.3f);
-
-  frameBuffer.fill(255);
-  frameBuffer.blendMode(DIFFERENCE);
   frameBuffer.ellipse(mouseX, mouseY, width * 0.3f, height * 0.3f);
+  frameBuffer.ellipse(width - mouseX, height - mouseY, width * 0.3f, height * 0.3f);
+  frameBuffer.ellipse(mouseX, height - mouseY, width * 0.3f, height * 0.3f);
+  frameBuffer.ellipse(width - mouseX, mouseY, width * 0.3f, height * 0.3f);
 }
   public void settings() {  size(400, 400, P2D); }
   static public void main(String[] passedArgs) {

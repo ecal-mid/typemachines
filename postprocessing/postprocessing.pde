@@ -20,10 +20,11 @@ void draw () {
 // Use this function and the "frameBuffer" variable to draw your black&white shapes.
 void renderBuffer () {
   frameBuffer.background(0);
+  frameBuffer.blendMode(DIFFERENCE);
   frameBuffer.fill(255);
   frameBuffer.ellipse(width * 0.5, height * 0.5, width * 0.3, height * 0.3);
-
-  frameBuffer.fill(255);
-  frameBuffer.blendMode(DIFFERENCE);
   frameBuffer.ellipse(mouseX, mouseY, width * 0.3, height * 0.3);
+  frameBuffer.ellipse(width - mouseX, height - mouseY, width * 0.3, height * 0.3);
+  frameBuffer.ellipse(mouseX, height - mouseY, width * 0.3, height * 0.3);
+  frameBuffer.ellipse(width - mouseX, mouseY, width * 0.3, height * 0.3);
 }

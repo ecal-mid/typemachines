@@ -17,6 +17,7 @@ void draw () {
   shader(postProcessingShader);
 }
 
+// Use this function and the "frameBuffer" variable to draw your black&white shapes.
 void renderBuffer () {
   frameBuffer.background(0);
   frameBuffer.fill(255);

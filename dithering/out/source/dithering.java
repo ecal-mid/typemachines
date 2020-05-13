@@ -25,8 +25,8 @@ PImage nearestTexture;
 PShader ditheringShader;
 PGraphics canvas;
 
-int resX = 500;
-int resY = 500;
+int resX = 100;
+int resY = 100;
 
 public void setup() {
   

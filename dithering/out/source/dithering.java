@@ -3,6 +3,9 @@ import processing.data.*;
 import processing.event.*; 
 import processing.opengl.*; 
 
+import processing.opengl.*; 
+import codeanticode.glgraphics.*; 
+
 import java.util.HashMap; 
 import java.util.ArrayList; 
 import java.io.File; 
@@ -14,20 +17,31 @@ import java.io.IOException;
 
 public class dithering extends PApplet {
 
+
+
+
 PImage img;
 PShader ditheringShader;
+PGraphics canvas;
 
 public void setup() {
   
   img = loadImage("image.jpg");
   ditheringShader = loadShader("dithering-frag.glsl", "dithering-vert.glsl");
-  ortho(-width/2, width/2, -500, 500);
+  canvas = createGraphics(200, 200, P2D);
+
+  hint(DISABLE_TEXTURE_MIPMAPS);
+  ((PGraphicsOpenGL)g).textureSampling(2);
 }
 
 public void draw() {
+  canvas.beginDraw();
   ditheringShader.set("map", img);
-  rect(0, 0, 100, 100);
-  shader(ditheringShader);
+  canvas.rect(0, 0, canvas.width, canvas.height);
+  canvas.shader(ditheringShader);
+  canvas.endDraw();
+
+  image(canvas, 0, 0, width, height);
 }
   public void settings() {  size(1000, 1000, P3D); }
   static public void main(String[] passedArgs) {

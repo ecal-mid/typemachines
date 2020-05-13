@@ -1,22 +1,15 @@
 PImage img;
 PShader ditheringShader;
-PGraphics canvas;
 
 void setup() {
-  size(1000, 1000, P2D);
+  size(1000, 1000, P3D);
   img = loadImage("image.jpg");
   ditheringShader = loadShader("dithering-frag.glsl", "dithering-vert.glsl");
-  canvas = createGraphics(width, height);
+  ortho(-width/2, width/2, -500, 500);
 }
 
 void draw() {
-  // Render canvas
-  canvas.beginDraw();
-  canvas.image(img, 0, 0, width, height);
-  canvas.endDraw();
-
-  // Render dithered canvas
-  ditheringShader.set("map", canvas);
-  rect(0, 0, width, height);
+  ditheringShader.set("map", img);
+  rect(0, 0, 100, 100);
   shader(ditheringShader);
 }
